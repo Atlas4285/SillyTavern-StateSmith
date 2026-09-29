@@ -1,0 +1,629 @@
+<div id="statesmith_settings" class="statesmith-settings">
+    <div class="inline-drawer">
+        <div class="inline-drawer-toggle inline-drawer-header">
+            <b data-i18n="statesmith.settings.title">State Smith</b>
+            <div
+                class="inline-drawer-icon fa-solid fa-circle-chevron-down down"
+            ></div>
+        </div>
+
+        <div class="inline-drawer-content">
+            <div class="statesmith-enable-setting">
+                <label class="checkbox_label" for="statesmith_enabled">
+                    <input id="statesmith_enabled" type="checkbox" />
+                    <span data-i18n="statesmith.settings.enabled"
+                        >Enable State Smith</span
+                    >
+                </label>
+            </div>
+
+            <div class="statesmith-active-config">
+                <span data-i18n="statesmith.settings.current_config">
+                    Current configuration
+                </span>
+                <strong id="statesmith_active_config_name">None</strong>
+            </div>
+
+            <div class="statesmith-config-layout">
+                <section class="statesmith-config-browser">
+                    <div
+                        id="statesmith_config_list_label"
+                        data-i18n="statesmith.settings.configurations"
+                    >
+                        Configurations
+                    </div>
+
+                    <div
+                        id="statesmith_config_list"
+                        class="statesmith-config-list"
+                        role="group"
+                        aria-labelledby="statesmith_config_list_label"
+                    ></div>
+
+                    <button
+                        id="statesmith_config_set_current"
+                        class="menu_button"
+                        type="button"
+                        data-i18n="statesmith.settings.set_current"
+                    >
+                        Set as current
+                    </button>
+
+                    <div class="statesmith-button-row">
+                        <button
+                            id="statesmith_config_new"
+                            class="menu_button"
+                            type="button"
+                            data-i18n="statesmith.settings.new"
+                        >
+                            New
+                        </button>
+                        <button
+                            id="statesmith_config_duplicate"
+                            class="menu_button"
+                            type="button"
+                            data-i18n="statesmith.settings.duplicate"
+                        >
+                            Duplicate
+                        </button>
+                        <button
+                            id="statesmith_config_delete"
+                            class="menu_button redWarningBG"
+                            type="button"
+                            data-i18n="statesmith.settings.delete"
+                        >
+                            Delete
+                        </button>
+                    </div>
+
+                    <div class="statesmith-button-row">
+                        <button
+                            id="statesmith_config_up"
+                            class="menu_button"
+                            type="button"
+                            data-i18n="statesmith.settings.move_up"
+                        >
+                            Move up
+                        </button>
+                        <button
+                            id="statesmith_config_down"
+                            class="menu_button"
+                            type="button"
+                            data-i18n="statesmith.settings.move_down"
+                        >
+                            Move down
+                        </button>
+                    </div>
+
+                    <div class="statesmith-button-row">
+                        <button
+                            id="statesmith_import_json"
+                            class="menu_button"
+                            type="button"
+                            data-i18n="statesmith.settings.import_json"
+                        >
+                            Import
+                        </button>
+                        <button
+                            id="statesmith_export_selected"
+                            class="menu_button"
+                            type="button"
+                            data-i18n="statesmith.settings.export_selected"
+                        >
+                            Export
+                        </button>
+                    </div>
+                    <input
+                        id="statesmith_import_file"
+                        type="file"
+                        accept=".json,application/json"
+                        hidden
+                    />
+                    <div
+                        id="statesmith_transfer_feedback"
+                        class="statesmith-config-feedback"
+                        aria-live="polite"
+                    ></div>
+                    <ul
+                        id="statesmith_transfer_issues"
+                        class="statesmith-config-issues"
+                        hidden
+                    ></ul>
+                </section>
+
+                <section class="statesmith-config-editor">
+                    <div
+                        id="statesmith_config_empty"
+                        class="statesmith-config-empty"
+                        data-i18n="statesmith.settings.empty"
+                    >
+                        Create or select a configuration to begin.
+                    </div>
+
+                    <form id="statesmith_config_form" hidden>
+                        <label for="statesmith_config_name">
+                            <span data-i18n="statesmith.settings.name">
+                                Name
+                            </span>
+                            <input
+                                id="statesmith_config_name"
+                                class="text_pole"
+                                type="text"
+                                required
+                                maxlength="100"
+                            />
+                        </label>
+
+                        <label for="statesmith_config_description">
+                            <span data-i18n="statesmith.settings.description">
+                                Description
+                            </span>
+                            <textarea
+                                id="statesmith_config_description"
+                                class="text_pole"
+                                rows="3"
+                                maxlength="1000"
+                            ></textarea>
+                        </label>
+
+                        <section class="statesmith-fields-section">
+                            <div class="statesmith-section-heading">
+                                <strong data-i18n="statesmith.settings.fields">
+                                    Fields
+                                </strong>
+                                <span>
+                                    <span data-i18n="statesmith.settings.total">
+                                        Total </span
+                                    >:
+                                    <strong id="statesmith_field_count"
+                                        >0</strong
+                                    >
+                                </span>
+                            </div>
+
+                            <div class="statesmith-field-workspace">
+                                <div class="statesmith-field-browser">
+                                    <select
+                                        id="statesmith_field_list"
+                                        class="text_pole statesmith-field-list"
+                                        size="5"
+                                        aria-label="Fields"
+                                        data-i18n="[aria-label]statesmith.settings.fields"
+                                    ></select>
+                                    <div class="statesmith-button-row">
+                                        <button
+                                            id="statesmith_field_new"
+                                            class="menu_button"
+                                            type="button"
+                                            data-i18n="statesmith.settings.new"
+                                        >
+                                            New
+                                        </button>
+                                        <button
+                                            id="statesmith_field_duplicate"
+                                            class="menu_button"
+                                            type="button"
+                                            data-i18n="statesmith.settings.duplicate"
+                                        >
+                                            Duplicate
+                                        </button>
+                                        <button
+                                            id="statesmith_field_delete"
+                                            class="menu_button redWarningBG"
+                                            type="button"
+                                            data-i18n="statesmith.settings.delete"
+                                        >
+                                            Delete
+                                        </button>
+                                    </div>
+                                    <div class="statesmith-button-row">
+                                        <button
+                                            id="statesmith_field_up"
+                                            class="menu_button"
+                                            type="button"
+                                            data-i18n="statesmith.settings.move_up"
+                                        >
+                                            Move up
+                                        </button>
+                                        <button
+                                            id="statesmith_field_down"
+                                            class="menu_button"
+                                            type="button"
+                                            data-i18n="statesmith.settings.move_down"
+                                        >
+                                            Move down
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div
+                                    id="statesmith_field_empty"
+                                    class="statesmith-field-empty"
+                                    data-i18n="statesmith.settings.no_fields"
+                                >
+                                    Create a field to begin editing.
+                                </div>
+
+                                <div
+                                    id="statesmith_field_editor"
+                                    class="statesmith-field-editor"
+                                    hidden
+                                >
+                                    <div class="statesmith-field-common-grid">
+                                        <label for="statesmith_field_name">
+                                            <span
+                                                data-i18n="statesmith.settings.field_name"
+                                            >
+                                                Field name
+                                            </span>
+                                            <input
+                                                id="statesmith_field_name"
+                                                class="text_pole"
+                                                type="text"
+                                                required
+                                                maxlength="64"
+                                                pattern="[a-z一-鿿][a-z0-9_一-鿿]*"
+                                            />
+                                        </label>
+                                        <label for="statesmith_field_type">
+                                            <span
+                                                data-i18n="statesmith.settings.field_type"
+                                            >
+                                                Type
+                                            </span>
+                                            <select
+                                                id="statesmith_field_type"
+                                                class="text_pole"
+                                            >
+                                                <option
+                                                    value="number"
+                                                    data-i18n="statesmith.settings.field_type_number"
+                                                >
+                                                    Number
+                                                </option>
+                                                <option
+                                                    value="progress"
+                                                    data-i18n="statesmith.settings.field_type_progress"
+                                                >
+                                                    Progress
+                                                </option>
+                                                <option
+                                                    value="text"
+                                                    data-i18n="statesmith.settings.field_type_text"
+                                                >
+                                                    Text
+                                                </option>
+                                                <option
+                                                    value="toggle"
+                                                    data-i18n="statesmith.settings.field_type_toggle"
+                                                >
+                                                    Toggle
+                                                </option>
+                                                <option
+                                                    value="tag"
+                                                    data-i18n="statesmith.settings.field_type_tag"
+                                                >
+                                                    Tag
+                                                </option>
+                                                <option
+                                                    value="select"
+                                                    data-i18n="statesmith.settings.field_type_select"
+                                                >
+                                                    Select
+                                                </option>
+                                            </select>
+                                        </label>
+                                    </div>
+
+                                    <label for="statesmith_field_label">
+                                        <span
+                                            data-i18n="statesmith.settings.field_label"
+                                        >
+                                            Label
+                                        </span>
+                                        <input
+                                            id="statesmith_field_label"
+                                            class="text_pole"
+                                            type="text"
+                                            maxlength="100"
+                                            placeholder="Uses the field name when empty"
+                                            data-i18n="[placeholder]statesmith.settings.field_label_placeholder"
+                                        />
+                                    </label>
+
+                                    <label for="statesmith_field_description">
+                                        <span
+                                            data-i18n="statesmith.settings.field_description"
+                                        >
+                                            Description
+                                        </span>
+                                        <textarea
+                                            id="statesmith_field_description"
+                                            class="text_pole"
+                                            rows="2"
+                                            required
+                                            maxlength="500"
+                                        ></textarea>
+                                    </label>
+
+                                    <div
+                                        id="statesmith_numeric_config"
+                                        class="statesmith-field-config-grid"
+                                        hidden
+                                    >
+                                        <label for="statesmith_numeric_default">
+                                            <span
+                                                data-i18n="statesmith.settings.default_value"
+                                            >
+                                                Default value
+                                            </span>
+                                            <input
+                                                id="statesmith_numeric_default"
+                                                class="text_pole"
+                                                type="number"
+                                                step="any"
+                                                required
+                                            />
+                                        </label>
+                                        <label for="statesmith_numeric_min">
+                                            <span
+                                                data-i18n="statesmith.settings.minimum"
+                                            >
+                                                Minimum
+                                            </span>
+                                            <input
+                                                id="statesmith_numeric_min"
+                                                class="text_pole"
+                                                type="number"
+                                                step="any"
+                                                required
+                                            />
+                                        </label>
+                                        <label for="statesmith_numeric_max">
+                                            <span
+                                                data-i18n="statesmith.settings.maximum"
+                                            >
+                                                Maximum
+                                            </span>
+                                            <input
+                                                id="statesmith_numeric_max"
+                                                class="text_pole"
+                                                type="number"
+                                                step="any"
+                                                required
+                                            />
+                                        </label>
+                                    </div>
+
+                                    <div
+                                        id="statesmith_text_config"
+                                        class="statesmith-field-config-grid"
+                                        hidden
+                                    >
+                                        <label for="statesmith_text_default">
+                                            <span
+                                                data-i18n="statesmith.settings.default_value"
+                                            >
+                                                Default value
+                                            </span>
+                                            <textarea
+                                                id="statesmith_text_default"
+                                                class="text_pole"
+                                                rows="2"
+                                                maxlength="10000"
+                                            ></textarea>
+                                        </label>
+                                        <label for="statesmith_text_max_length">
+                                            <span
+                                                data-i18n="statesmith.settings.maximum_length"
+                                            >
+                                                Maximum length
+                                            </span>
+                                            <input
+                                                id="statesmith_text_max_length"
+                                                class="text_pole"
+                                                type="number"
+                                                required
+                                                min="1"
+                                                max="10000"
+                                                step="1"
+                                            />
+                                        </label>
+                                    </div>
+
+                                    <div
+                                        id="statesmith_toggle_config"
+                                        class="statesmith-toggle-config"
+                                        hidden
+                                    >
+                                        <label
+                                            class="checkbox_label"
+                                            for="statesmith_toggle_default"
+                                        >
+                                            <input
+                                                id="statesmith_toggle_default"
+                                                type="checkbox"
+                                            />
+                                            <span
+                                                data-i18n="statesmith.settings.default_enabled"
+                                            >
+                                                Enabled by default
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <div
+                                        id="statesmith_choice_config"
+                                        class="statesmith-choice-config"
+                                        hidden
+                                    >
+                                        <div class="statesmith-choice-heading">
+                                            <span
+                                                data-i18n="statesmith.settings.options"
+                                            >
+                                                Options
+                                            </span>
+                                        </div>
+                                        <div
+                                            id="statesmith_choice_options"
+                                            class="statesmith-choice-options"
+                                            role="group"
+                                            aria-label="Options"
+                                            data-i18n="[aria-label]statesmith.settings.options"
+                                        ></div>
+                                        <small
+                                            id="statesmith_choice_issues"
+                                            class="statesmith-choice-issues"
+                                            aria-live="polite"
+                                            hidden
+                                        ></small>
+                                        <button
+                                            id="statesmith_choice_add"
+                                            class="menu_button"
+                                            type="button"
+                                        >
+                                            <i
+                                                class="fa-solid fa-plus"
+                                                aria-hidden="true"
+                                            ></i>
+                                            <span
+                                                data-i18n="statesmith.settings.add_option"
+                                            >
+                                                Add option
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="statesmith-template-field">
+                            <div class="statesmith-field-heading">
+                                <div class="statesmith-label-with-info">
+                                    <label for="statesmith_config_prompt">
+                                        <span
+                                            data-i18n="statesmith.settings.prompt"
+                                        >
+                                            State prompt
+                                        </span>
+                                    </label>
+                                    <span
+                                        class="opacity50p fa-solid fa-circle-info"
+                                        title="Injected into the model context on every generation."
+                                        data-i18n="[title]statesmith.settings.prompt_help"
+                                    ></span>
+                                </div>
+                                <label class="checkbox_label">
+                                    <input
+                                        id="statesmith_prompt_use_default"
+                                        type="checkbox"
+                                    />
+                                    <span
+                                        data-i18n="statesmith.settings.use_default"
+                                    >
+                                        Use localized default
+                                    </span>
+                                </label>
+                            </div>
+                            <textarea
+                                id="statesmith_config_prompt"
+                                class="text_pole statesmith-template-textarea"
+                                rows="6"
+                                maxlength="10000"
+                            ></textarea>
+                            <small
+                                data-i18n="statesmith.settings.prompt_placeholders"
+                            >
+                                Available placeholders: {{state}}, {{toolName}}.
+                            </small>
+                        </div>
+
+                        <div class="statesmith-template-field">
+                            <div class="statesmith-field-heading">
+                                <div class="statesmith-label-with-info">
+                                    <label for="statesmith_tool_description">
+                                        <span
+                                            data-i18n="statesmith.settings.tool_description"
+                                        >
+                                            Tool description
+                                        </span>
+                                    </label>
+                                    <span
+                                        class="opacity50p fa-solid fa-circle-info"
+                                        title="Describes when and how the model should update state."
+                                        data-i18n="[title]statesmith.settings.tool_description_help"
+                                    ></span>
+                                </div>
+                                <label class="checkbox_label">
+                                    <input
+                                        id="statesmith_tool_description_use_default"
+                                        type="checkbox"
+                                    />
+                                    <span
+                                        data-i18n="statesmith.settings.use_default"
+                                    >
+                                        Use localized default
+                                    </span>
+                                </label>
+                            </div>
+                            <textarea
+                                id="statesmith_tool_description"
+                                class="text_pole statesmith-template-textarea"
+                                rows="5"
+                                maxlength="4000"
+                            ></textarea>
+                            <small
+                                data-i18n="statesmith.settings.tool_description_placeholders"
+                            >
+                                Available placeholder: {{fields}}.
+                            </small>
+                        </div>
+
+                        <div
+                            id="statesmith_config_feedback"
+                            class="statesmith-config-feedback"
+                            aria-live="polite"
+                        ></div>
+
+                        <ul
+                            id="statesmith_config_issues"
+                            class="statesmith-config-issues"
+                            hidden
+                        ></ul>
+
+                        <div class="statesmith-editor-actions">
+                            <span
+                                id="statesmith_unsaved_indicator"
+                                class="statesmith-unsaved-indicator"
+                                hidden
+                                data-i18n="statesmith.settings.unsaved"
+                            >
+                                Unsaved changes
+                            </span>
+                            <div
+                                class="statesmith-button-row statesmith-editor-button-row"
+                            >
+                                <button
+                                    id="statesmith_config_revert"
+                                    class="menu_button"
+                                    type="button"
+                                    data-i18n="statesmith.settings.revert"
+                                >
+                                    Revert
+                                </button>
+                                <button
+                                    id="statesmith_config_save"
+                                    class="menu_button menu_button_icon"
+                                    type="submit"
+                                    data-i18n="statesmith.settings.save"
+                                >
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

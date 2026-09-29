@@ -1,0 +1,55 @@
+<section id="statesmith_chat_panel" class="statesmith-chat-panel" hidden>
+    <div class="statesmith-chat-panel-header">
+        <span class="statesmith-chat-panel-heading">
+            <span id="statesmith_chat_panel_title">State</span>
+            <strong id="statesmith_chat_panel_config"></strong>
+        </span>
+        <span class="statesmith-chat-panel-actions">
+            <button
+                id="statesmith_chat_panel_edit"
+                class="statesmith-chat-panel-action"
+                type="button"
+                aria-pressed="false"
+            >
+                <i
+                    id="statesmith_chat_panel_edit_icon"
+                    class="fa-solid fa-pen"
+                    aria-hidden="true"
+                ></i>
+            </button>
+            <button
+                id="statesmith_chat_panel_toggle"
+                class="statesmith-chat-panel-action"
+                type="button"
+                aria-controls="statesmith_chat_panel_content"
+                aria-expanded="true"
+            >
+                <i
+                    id="statesmith_chat_panel_icon"
+                    class="fa-solid fa-chevron-down"
+                    aria-hidden="true"
+                ></i>
+            </button>
+        </span>
+    </div>
+    <p
+        id="statesmith_chat_panel_feedback"
+        class="statesmith-chat-panel-feedback"
+        role="status"
+        hidden
+    ></p>
+    <div
+        id="statesmith_chat_panel_content"
+        class="statesmith-chat-panel-content"
+    >
+        <p
+            id="statesmith_chat_panel_empty"
+            class="statesmith-chat-panel-empty"
+            hidden
+        ></p>
+        <dl
+            id="statesmith_chat_panel_fields"
+            class="statesmith-chat-panel-fields"
+        ></dl>
+    </div>
+</section>

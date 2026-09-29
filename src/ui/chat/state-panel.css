@@ -1,0 +1,226 @@
+.statesmith-chat-panel {
+    flex: 0 0 auto;
+    min-width: 0;
+    margin-top: 1px;
+    border: 1px solid var(--SmartThemeBorderColor);
+    border-radius: 6px;
+    background: var(--SmartThemeBlurTintColor);
+    color: var(--SmartThemeBodyColor);
+    backdrop-filter: blur(var(--SmartThemeBlurStrength));
+}
+
+.statesmith-chat-panel[hidden],
+.statesmith-chat-panel-content[hidden],
+.statesmith-chat-panel-empty[hidden],
+.statesmith-chat-panel-fields[hidden],
+.statesmith-chat-panel-feedback[hidden] {
+    display: none;
+}
+
+.statesmith-chat-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.3rem 0.55rem;
+}
+
+.statesmith-chat-panel-actions {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 0.2rem;
+}
+
+.statesmith-chat-panel-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.8rem;
+    height: 1.8rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+.statesmith-chat-panel-action:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.statesmith-chat-panel-action:focus-visible {
+    outline: 2px solid var(--SmartThemeQuoteColor);
+    outline-offset: -2px;
+}
+
+.statesmith-chat-panel-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    min-width: 0;
+}
+
+.statesmith-chat-panel-heading strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.statesmith-chat-panel-content {
+    max-height: min(20dvh, 12rem);
+    overflow-y: auto;
+    padding: 0 0.55rem 0.45rem;
+}
+
+.statesmith-chat-panel-feedback {
+    margin: 0 0.55rem 0.3rem;
+    color: var(--SmartThemeQuoteColor);
+}
+
+.statesmith-chat-panel-empty {
+    margin: 0;
+    color: var(--SmartThemeEmColor);
+}
+
+.statesmith-chat-panel-fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+    gap: 0.35rem;
+    margin: 0;
+}
+
+.statesmith-chat-panel-field {
+    display: grid;
+    grid-template-rows: minmax(0, 1.2em) minmax(0, 1.8rem);
+    gap: 0.05rem;
+    min-width: 0;
+    padding: 0.3rem 0.5rem;
+    border: 1px solid var(--SmartThemeBorderColor);
+    border-radius: 5px;
+    background: color-mix(
+        in srgb,
+        var(--SmartThemeBlurTintColor) 75%,
+        transparent
+    );
+}
+
+.statesmith-chat-panel-field--text-editing {
+    grid-template-rows: minmax(0, 1.2em) minmax(1.8rem, auto);
+}
+
+.statesmith-chat-panel-field--text-editing dd {
+    overflow: visible;
+}
+
+.statesmith-chat-panel-field dt {
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.statesmith-chat-panel-field dd {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.statesmith-chat-panel-text {
+    display: block;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.statesmith-chat-panel-progress {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    width: 100%;
+    min-width: 0;
+}
+
+.statesmith-chat-panel-progress span {
+    flex: 0 0 auto;
+}
+
+.statesmith-chat-panel-progress progress {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 0.55rem;
+    accent-color: var(--SmartThemeQuoteColor);
+}
+
+.statesmith-chat-panel-badge {
+    display: inline-block;
+    max-width: 100%;
+    padding: 0.05rem 0.4rem;
+    border: 1px solid var(--SmartThemeBorderColor);
+    border-radius: 999px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.statesmith-chat-panel-badge--on {
+    border-color: var(--green70, #70c990);
+}
+
+.statesmith-chat-panel-editor {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    height: 1.7rem;
+    margin: 0;
+    padding: 0.1rem 0.3rem;
+    border: 1px solid var(--SmartThemeBorderColor);
+    border-radius: 5px;
+    background-color: var(--black30a);
+    color: var(--SmartThemeBodyColor);
+    font: inherit;
+}
+
+select.statesmith-chat-panel-editor {
+    padding-right: 1rem;
+}
+
+.statesmith-chat-panel-editor option,
+.statesmith-chat-panel-editor option:not(:checked) {
+    background-color: var(--SmartThemeBlurTintColor);
+    color: var(--SmartThemeBodyColor);
+}
+
+textarea.statesmith-chat-panel-editor {
+    min-height: 1.7rem;
+    max-height: min(18dvh, 10rem);
+    resize: vertical;
+    overflow: auto;
+}
+
+input[type="checkbox"].statesmith-chat-panel-editor {
+    width: 1.1rem;
+    height: 1.1rem;
+    padding: 0;
+    background-color: var(--black30a);
+}
+
+input[type="checkbox"].statesmith-chat-panel-editor::before {
+    box-shadow: inset 1em 1em var(--SmartThemeBodyColor);
+}
+
+@media (max-width: 700px) {
+    .statesmith-chat-panel-content {
+        max-height: min(18dvh, 10rem);
+    }
+
+    .statesmith-chat-panel-fields {
+        grid-template-columns: 1fr;
+    }
+}
